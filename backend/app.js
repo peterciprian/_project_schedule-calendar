@@ -1,66 +1,83 @@
 var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const db = require('./config/database')
-const helmet = require('helmet')
-const fs = require('fs')
-
-
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const session = require('express-session')
+const helmet = require('helmet');
+const passport = require('passport')
+const fs = require('fs');
+const rfs = require('rotating-file-stream');
+const cors = require('cors');
 const http = require('http');
 
-var indexRouter = require('./routes/index');
+const db = require('./config/database/database.js');
+const User = require('./model/user-model');
+const userRouter = require('./routes/user-route');
+const indexRouter = require('./routes/index');
 
-let port = 3000;
+const logDirectory = path.join(__dirname, 'log');
+const port = process.env.PORT || 3002;
 
-var app = express();
+const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// Connect to MongoDB
-mongoose.connect(db.uri, db.options).then(
+//connect to mongoDB
+mongoose.connect(db.uri, db.options,
   () => {
-    console.log('MongoDB connected.')
+    console.log('MongoDB connected.');
   },
   err => {
-    console.error('MongoDB error.:' + err)
-  }
-)
-// Parse application/x-www-form-urlencoded
+    console.error('MongoDB error: ' + err)
+  })
+
+//LOGGING
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+let accessLogStream = rfs('access.log', {
+  interval: '1d',
+  path: logDirectory,
+
+})
+app.use(morgan('combined', {
+  stream: accessLogStream,
+  skip: (req, res) => res.statusCode < 400
+}));
+
+//SECURITY
+app.use(helmet());
+
+//Enable CORS
+app.use(cors());
+
+// Body parser
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
-}))
-
-// Parse application/json
-app.use(bodyParser.json())
-
-// Minden kérés loggolása
-app.use(logger('dev', {
-  stream: fs.createWriteStream('./access.log', {
-    flags: 'a'
-  })
-}))
-
-// basic secure
-app.use(helmet())
-
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
 }));
+
+//Cookie handling
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+//Session handling
+app.use(session({
+  secret: 'YOUR_SECRET_KEY',
+  resave: true,
+  saveUninitialized: true
+}));
 
+//Passport AUTH
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
+//User router
+app.use('/', userRouter);
+app.use('/index', indexRouter);
+
+/////////////////////////
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -76,13 +93,13 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+/*
 // Start Browser-Sync
 //a views mappában lévő bárhol található.html fájlok változása esetén újratölti az oldalt
 if (app.get('env') === 'development') {
   const browserSync = require('browser-sync')
   const config = {
-    files: ['views/**/*.html'],
+    files: ['views/**\/*.html'],
     logLevel: 'info',
     logSnippet: false,
     reloadDelay: 3000,
@@ -90,8 +107,11 @@ if (app.get('env') === 'development') {
   }
   const bs = browserSync(config)
   app.use(require('connect-browser-sync')(bs))
-}
+}*/
+/////////////////////////////////////////////
 
-app.listen('3003');
+//Start server
+app.listen(port);
+console.log('Server running on port: ' + port);
 
 module.exports = app;

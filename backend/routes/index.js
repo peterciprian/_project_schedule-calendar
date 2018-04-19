@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const postController = require('../controller/role.controller')
+const express = require('express')
+const postRouter = express.Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+postRouter.route('/')
+  .get(postController.list)
+  .post(postController.create);
 
-module.exports = router;
+postRouter.route('/:id')
+  .get(postController.find)
+  .put(postController.update)
+  .delete(postController.remove);
+
+module.exports = postRouter

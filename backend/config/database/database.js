@@ -1,8 +1,8 @@
 const host = 'localhost' // ahol a mongodb fut
 const port = 27017
-const user = 'root' // user passwordje és neve
-const password = 'toor'
-const database = 'blog'
+const user = 'user' // user passwordje és neve
+const password = 'password'
+const database = 'scheduleCalendar'
 
 const options = {
   connectTimeoutMS: 2000,
@@ -14,7 +14,7 @@ const options = {
   bufferMaxEntries: 0
 }
 
-const uri = `mongodb://${user}:${password}@${host}:${port}/${database}?authMechanism=SCRAM-SHA-1` //csatlakozáshosz szükséges link
+const uri = `mongodb://${user}:${password}@${host}:${port}/${database}` //csatlakozáshosz szükséges link
 
 module.exports = {
   uri: uri,
