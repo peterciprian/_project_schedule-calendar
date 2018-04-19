@@ -1,0 +1,59 @@
+nav.navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand(href='#')
+    i.far.fa-calendar     
+  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon    
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='#')
+          | Home
+          span.sr-only (current)         
+      li.nav-item
+        a.nav-link(href='#profile') Profile       
+      li.nav-item
+        a.nav-link(href='#library') Library         
+      li.nav-item
+        a.nav-link(href='#api') RESTful API         
+      li.nav-item
+        a.nav-link(href='#contact') Contact      
+    .form-inline.my-2.my-lg-0
+      .reg-log(style='display:block')
+        button.btn.btn-outline-success.my-2.my-sm-0(type='button', data-toggle='modal', data-target='#loginModal') Login         
+        button.btn.btn-outline-primary.my-2.my-sm-0(type='button', data-toggle='modal', data-target='#registerModal') Register|         
+      .logout(style='display:block')
+        span Logged in as {{username}}           
+        button.btn.btn-outline-dark.my-2.my-sm-0(type='submit') Logout
+// MODALS
+// loginModal
+#loginModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='loginModalTitle', aria-hidden='true')
+  .modal-dialog.modal-dialog-centered(role='document')
+    .modal-content
+      form(action='localhost:3000/login', method='post')
+        .modal-header
+          h5#loginModalLongTitle.modal-title Logging in          
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') &times;       
+        .modal-body
+          input.form-control(type='text', name='username', id='loginUsername', placeholder='username' ,[(ngModel)]="user.username")                         
+          input.form-control(type='password', name='password', id='loginPassword', placeholder='password' ,[(ngModel)]="user.password")     
+        .modal-footer
+          button.btn.btn-secondary(type='button', data-dismiss='modal') Close          
+          button.btn.btn-primary(type='button', (click)='login()') Login
+// registerModal
+#registerModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='registerModalTitle', aria-hidden='true')
+  .modal-dialog.modal-dialog-centered(role='document')
+    .modal-content
+      form(action='localhost:3000/register', method='post')
+        .modal-header
+          h5#registerModalLongTitle.modal-title Registration           
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') &times;   
+        .modal-body
+          input.form-control(type='text', name='username', id='username', placeholder='username' ,[(ngModel)]="user.username")        
+          input.form-control(type='email', name='email', id='email',  placeholder='email' ,[(ngModel)]="user.email")
+          input.form-control(type='password', name='password', id='password',  placeholder='password' ,[(ngModel)]="user.password")
+        .modal-footer
+          button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+          button.btn.btn-primary(type='button', (click)='register()') Register
+          

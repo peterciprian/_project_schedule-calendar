@@ -1,32 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 @Injectable()
 export class UserManagementService {
   url: 'http://localhost:3002';
+  datas: any;
+  user: {
+    username: 'ggjzg';
+    email: '';
+    password: '';
+  };
 
+  constructor(public http: Http, /*private user: UserData*/) { }
 
-  constructor(public http: Http) { }
-  data: any;
 
   errorHandling(res) {
     res = JSON.parse(res['_body']);
     if (res.error) {
       console.error('API error: ' + res.error);
     }
-    else { this.data = res; }
+    else { this.datas = res; }
   }
 
-  register(user) {
-    this.http.post(this.url + '/register', user).subscribe(
+  register() {
+    this.http.post(this.url + '/register', this.user).subscribe(
       data => {
         console.log(data);
         this.errorHandling(data);
       });
   }
 
-  login(user) {
-    this.http.post(this.url + '/login', user).subscribe(
+  login() {
+    this.http.post(this.url + '/login', this.user).subscribe(
       data => {
         console.log(data);
         this.errorHandling(data);
@@ -40,4 +46,10 @@ export class UserManagementService {
         this.errorHandling(data);
       });
   }
+}
+
+interface UserData {
+  username: string;
+  email: string;
+  password: string;
 }
