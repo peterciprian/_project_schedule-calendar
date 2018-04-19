@@ -1,0 +1,18 @@
+.container
+	.login.row
+    .col-6.offset-3
+      form.form-signin(action="/login", method="post")
+        h2.form-signin-heading Please sign in
+        input.input-block-level(type="text", name="username", placeholder="Email address")
+        input.input-block-level(type="password", name="password", placeholder="Password")
+        label.checkbox.
+          <input type="checkbox" value="remember-me" /> Remember me
+        button.btn.btn-large.btn-primary(type="submit") Sign in
+  .register.row
+    .col-6.offset-3
+      form.form-signin(action="/register", method="post")
+        h2.form-signin-heading Registration
+        input.input-block-level(type="text", name="username", placeholder="Email address")
+        input.input-block-level(type="password", name="password", placeholder="Password")
+
+        button.btn.btn-large.btn-primary(type="submit") Register
