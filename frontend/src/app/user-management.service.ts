@@ -12,7 +12,7 @@ export class UserManagementService /*implements UserData*/ {
 */
   loggedIn: boolean = false;
   datas: any;
-  loggedInUser: string = '';
+  loggedInUser: any;
 
 
   constructor(public http: Http) { }
@@ -38,7 +38,7 @@ export class UserManagementService /*implements UserData*/ {
       data => {
         console.log(data);
         this.loggedIn = data.ok;
-        this.loggedInUser = JSON.parse(data['_body']).success;
+        this.loggedInUser = JSON.parse(data['_body']).user;
         this.errorHandling(data);
       });
   }
