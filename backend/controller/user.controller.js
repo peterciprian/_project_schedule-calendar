@@ -14,7 +14,7 @@ module.exports = {
         }), req.body.password, (err) => {
             if (err) {
                 res.json({
-                    erroeo: err
+                    error: err
                 })
             }
             res.json({
@@ -24,7 +24,9 @@ module.exports = {
     },
 
     login: (req, res) => {
-        res.redirect('/');
+        res.json({
+            success: 'Logged in as: ' + req.body.username
+        })
     },
 
     logout: (req, res) => {

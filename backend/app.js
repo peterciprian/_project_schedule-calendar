@@ -16,7 +16,7 @@ const http = require('http');
 const db = require('./config/database/database.js');
 const User = require('./model/user-model');
 const userRouter = require('./routes/user-route');
-const indexRouter = require('./routes/index');
+const roleRouter = require('./routes/role-route');
 
 const logDirectory = path.join(__dirname, 'log');
 const port = process.env.PORT || 3002;
@@ -75,7 +75,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //User router
 app.use('/', userRouter);
-app.use('/index', indexRouter);
+app.use('/role', roleRouter);
 
 /////////////////////////
 // catch 404 and forward to error handler
@@ -91,7 +91,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json('error');
 });
 /*
 // Start Browser-Sync

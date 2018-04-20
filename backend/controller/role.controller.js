@@ -24,6 +24,7 @@ module.exports = {
             if (err) {
                 res.send(err)
             }
+            //usert lekeresni id alapján és a todoit updatelni (mint itt lentebb az update-nél)
             res.json(role)
         })
     },

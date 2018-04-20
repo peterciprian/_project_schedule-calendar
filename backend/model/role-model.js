@@ -19,6 +19,11 @@ const RoleSchema = new mongoose.Schema({
         type: String,
         required: false,
         default: 'Budapest'
+    },
+    color: {
+        type: String,
+        required: false,
+        default: '#666'
     }
 }, {
     timestamps: true
