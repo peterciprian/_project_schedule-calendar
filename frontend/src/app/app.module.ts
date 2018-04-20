@@ -7,11 +7,13 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { RoleApiComponent } from './role-api/role-api.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    RoleApiComponent
   ],
   imports: [
     HttpModule,

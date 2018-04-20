@@ -1,0 +1,44 @@
+.adddNew
+  button.btn.btn-outline-primary.my-2.my-sm-0(data-toggle="modal", data-target="#addRole" ) Add Role
+
+#addRole.modal.fade(tabindex="-1", role="dialog", aria-labelledby="addRoleTitle", aria-hidden="true")
+  .modal-dialog.modal-dialog-centered(role="document")
+    .modal-content
+      .modal-header
+        h5#loginModalLongTitle.modal-title New Role         
+        button.close(type="button", data-dismiss="modal", aria-label="Close")
+          span(aria-hidden="true") &times;       
+      .modal-body
+        .card(style='width: 18rem;')
+          .card-body
+            h5.card-title
+              input.form-control(type='text', name='title', placeholder='Role Title' ,[(ngModel)]="role.title")             
+            p.card-text
+              textarea.form-control(name='description',placeholder="Role description" ,[(ngModel)]="role.descriptipn")           
+          ul.list-group.list-group-flush
+            li.list-group-item
+              input.form-control(type='text', name='time', placeholder='Time, date' ,[(ngModel)]="role.time")       
+            li.list-group-item
+              input.form-control(type='text', name='location', placeholder='Location' ,[(ngModel)]="role.location")
+            li.list-group-item
+              input.form-control(type='color', name='color', placeholder='#666' ,[(ngModel)]="role.color")
+      .modal-footer
+        button.btn.btn-secondary(type="button", data-dismiss="modal") Close          
+        button.btn.btn-primary(type="button" ,(click)="add()") Add
+
+.card(style='width: 18rem;')
+  .card-body
+    h5.card-title
+      input.form-control(type='text', name='title', value='Role Title')             
+    p.card-text
+      textarea.form-control(name='description') Role description          
+  ul.list-group.list-group-flush
+    li.list-group-item
+      input.form-control(type='text', name='time', value='Time, date')       
+    li.list-group-item
+      input.form-control(type='text', name='location', value='Location')
+    li.list-group-item
+      input.form-control(type='color', name='color', value='#666')
+  .card-body.btn-group
+    button.btn.btn-outline-info.my-2.my-sm-0 Update
+    button.btn.btn-outline-danger.my-2.my-sm-0 Delete

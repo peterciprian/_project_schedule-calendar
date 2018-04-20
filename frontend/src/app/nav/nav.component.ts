@@ -1,18 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { UserManagementService } from '../user-management.service';
+import { FormsModule } from '@angular/forms';
+import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.pug',
-  styleUrls: ['./nav.component.css'],
-  providers: [UserManagementService],
+  styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
 
-  constructor(private userManagementService: UserManagementService) {
-    console.log(this.userManagementService);
+  user: object = {
+    username: '',
+    email: '',
+    password: ''
   }
-  ngOnInit() {
+
+  constructor(private userService: UserManagementService, public http: HttpClient) {
+  }
+  login() {
+    this.userService.login(this.user)
+  }
+
+  register() {
+    this.userService.register(this.user)
+  }
+
+  logout() {
+    this.userService.logout()
   }
 
 }
