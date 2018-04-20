@@ -7,8 +7,7 @@ roleRouter.route('/')
   .post(roleController.create);
 
 roleRouter.route('/:id')
-  .get(roleController.find)
   .put(roleController.update)
-  .delete(roleController.remove);
+  .delete(roleController.delete);
 
 module.exports = roleRouter

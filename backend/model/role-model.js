@@ -12,17 +12,14 @@ const RoleSchema = new mongoose.Schema({
     },
     time: {
         type: Date,
-        required: false,
         default: Date.now
     },
     location: {
         type: String,
-        required: false,
         default: 'Budapest'
     },
     color: {
         type: String,
-        required: false,
         default: '#666'
     }
 }, {

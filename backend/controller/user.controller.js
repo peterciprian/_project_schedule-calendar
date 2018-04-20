@@ -4,7 +4,7 @@ module.exports = {
     getUser: (req, res) => {
         res.json({
             user: req.user
-        })
+        }) /*user.tasks = [..,]*/
     },
 
     register: (req, res, next) => {
@@ -25,7 +25,8 @@ module.exports = {
 
     login: (req, res) => {
         res.json({
-            success: 'Logged in as: ' + req.body.username
+            user: req.user
+
         })
     },
 
