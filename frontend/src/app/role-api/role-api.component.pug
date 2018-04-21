@@ -1,6 +1,6 @@
-.api(*ngIf="userService.loggedIn")
+.api.row(*ngIf="userService.loggedIn")
   .list
-    button.btn.btn-outline-info.my-2.my-sm-0((click)="getAll()" ) List roles
+    button.btn.btn-outline-info.my-2.my-sm-0((click)="getAllFromUser(userService.loggedInUser['_id'])") List roles
   .adddNew
     button.btn.btn-outline-primary.my-2.my-sm-0(data-toggle="modal", data-target="#addRole" ) Add Role
 
@@ -27,21 +27,22 @@
                 input.form-control(type='color', name='color', placeholder='#666' ,[(ngModel)]="newRole.color")
         .modal-footer
           button.btn.btn-secondary(type="button", data-dismiss="modal") Close          
-          button.btn.btn-primary(type="button" ,(click)="add()") Add
-
-  .card(style='width: 18rem;', *ngFor="let i of roles")
-    .card-body
-      h5.card-title
-        input.form-control(type='text', name='title' ,[(ngModel)]="roles[i].title")             
-      p.card-text
-        textarea.form-control(name='description' ,[(ngModel)]="roles[i].description")          
-    ul.list-group.list-group-flush
-      li.list-group-item
-        input.form-control(type='text', name='time' ,[(ngModel)]="roles[i].time")       
-      li.list-group-item
-        input.form-control(type='text', name='location' ,[(ngModel)]="roles[i].location")
-      li.list-group-item
-        input.form-control(type='color', name='color' ,[(ngModel)]="roles[i].color")
-    .card-body.btn-group
-      button.btn.btn-outline-info.my-2.my-sm-0(type="button" ,(click)="update()") Update
-      button.btn.btn-outline-danger.my-2.my-sm-0(type="button" ,(click)="delete()") Delete
+          button.btn.btn-primary(type="button" ,(click)="create(userService.loggedInUser['_id'])") Create
+.row
+  .col-xs-12.col-md-4(*ngFor="let role of roles")
+    .card(style='width: 18rem;')
+      .card-body
+        h5.card-title
+          input.form-control(type='text', name='title' ,[(ngModel)]="role.title")             
+        p.card-text
+          textarea.form-control(name='description' ,[(ngModel)]="role.description")          
+      ul.list-group.list-group-flush
+        li.list-group-item
+          input.form-control(type='text', name='time' ,[(ngModel)]="role.time")       
+        li.list-group-item
+          input.form-control(type='text', name='location' ,[(ngModel)]="role.location")
+        li.list-group-item
+          input.form-control(type='color', name='color' ,[(ngModel)]="role.color")
+      .card-body.btn-group
+        button.btn.btn-outline-info.my-2.my-sm-0(type="button" ,(click)="update(role)") Update
+        button.btn.btn-outline-danger.my-2.my-sm-0(type="button" ,(click)="delete(userService.loggedInUser['_id'], role['id'])") Delete
