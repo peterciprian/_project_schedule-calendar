@@ -10,7 +10,7 @@ module.exports = {
             }
             User.findByIdAndUpdate(req.body.userid, {
                     $push: {
-                        tasks: role._id
+                        tasks: role['_id']
                     }
                 },
                 (err, data) => {
@@ -71,7 +71,7 @@ module.exports = {
             }
             User.findByIdAndUpdate(req.body.userid, {
                 $pop: {
-                    tasks: role._id
+                    tasks: role['_id']
                 }
             }, (err, data) => {
                 if (err) {
