@@ -18,7 +18,7 @@ module.exports = {
                         res.json(err)
                     }
                     res.json({
-                        success: 'ok'
+                        success: 'Role created'
                     })
                 })
         })
@@ -32,12 +32,48 @@ module.exports = {
             res.json(roles)
         })
     },
-    delete: (req, res) => {
-        Role.findByIdAndRemove(req.params.id, (err, data) => {
+
+    getAllFromUser: (req, res) => {
+        User.findById(req.params.id, (err, data) => {
             if (err) {
                 res.json(err)
             }
-            User.findByIdAndRemove(req.body.userid, (err, data) => {
+            Role.find({
+                '_id': data.tasks
+            }, (err, roles) => {
+                if (err) {
+                    res.json(err)
+                }
+                res.json(roles)
+            })
+
+        })
+
+    },
+    /*Role.find({}, (err, roles) => {
+            if (err) {
+                res.json(err)
+            }
+            User.findById(req.params.id, (err, data) => {
+                if (err) {
+                    res.json(err)
+                }
+                res.json(data)
+            })
+        })
+    },*/
+
+
+    delete: (req, res) => {
+        Role.findByIdAndRemove(req.params.id, (err, role) => {
+            if (err) {
+                res.json(err)
+            }
+            User.findByIdAndUpdate(req.body.userid, {
+                $pop: {
+                    tasks: role._id
+                }
+            }, (err, data) => {
                 if (err) {
                     res.json(err)
                 }
@@ -46,7 +82,9 @@ module.exports = {
         })
     },
     update: (req, res) => {
-        Role.findByIdAndUpdate(req.params.id, req.body, (err, role) => {
+        Role.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        }, (err, role) => {
             if (err) {
                 res.json(err)
             }
