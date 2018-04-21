@@ -48,14 +48,13 @@ export class RoleApiComponent implements OnInit {
     this.http.get('http://localhost:3002/role').subscribe(
       data => {
         this.roles = data;
-        this.errorHandling(data);
       });
   }
 
   getAllFromUser(userId) {
     this.http.get('http://localhost:3002/role/getuser/' + userId).subscribe(
-      data => {
-        this.roles = data;
+      getData => {
+        this.roles = getData;
         console.log(this.roles)
       });
   }
@@ -65,7 +64,7 @@ export class RoleApiComponent implements OnInit {
     this.http.post('http://localhost:3002/role', this.newRole).subscribe(
       data => {
         console.log(data);
-        this.errorHandling(data);
+        this.getAllFromUser(userId);
       });
   }
 
@@ -73,7 +72,6 @@ export class RoleApiComponent implements OnInit {
     this.http.put('http://localhost:3002/role/' + role['_id'], role).subscribe(
       data => {
         console.log(data);
-        this.errorHandling(data);
       });
   }
 
@@ -81,6 +79,7 @@ export class RoleApiComponent implements OnInit {
     this.http.put('http://localhost:3002/role/deleterole/' + roleId, { userid: userId }).subscribe(
       data => {
         console.log(data);
+        this.getAllFromUser(userId);
       });
   }
 
