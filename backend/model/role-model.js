@@ -20,7 +20,7 @@ const RoleSchema = new mongoose.Schema({
     },
     color: {
         type: String,
-        default: '#666'
+        default: '#666666'
     }
 }, {
     timestamps: true
