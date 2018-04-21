@@ -79,8 +79,8 @@ export class RoleApiComponent implements OnInit {
     this.http.put('http://localhost:3002/role/deleterole/' + roleId, { userid: userId }).subscribe(
       data => {
         console.log(data);
-        this.getAllFromUser(userId);
       });
+    this.getAllFromUser(userId);
   }
 
 
