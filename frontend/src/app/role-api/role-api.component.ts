@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { UserManagementService } from '../user-management.service';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-role-api',
@@ -79,8 +80,8 @@ export class RoleApiComponent implements OnInit {
     this.http.put('http://localhost:3002/role/deleterole/' + roleId, { userid: userId }).subscribe(
       data => {
         console.log(data);
+        this.getAllFromUser(userId);
       });
-    this.getAllFromUser(userId);
   }
 
 

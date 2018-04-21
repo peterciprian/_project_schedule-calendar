@@ -1,36 +1,36 @@
 .api.row(*ngIf="userService.loggedIn")
   .list
-    button.btn.btn-outline-info.my-2.my-sm-0((click)="getAllFromUser(userService.loggedInUser['_id'])") List roles
+    button.btn.btn-outline-info.my-2.my-sm-0((click)="getAllFromUser(userService.loggedInUser['_id'])") Mutasd
   .adddNew
-    button.btn.btn-outline-primary.my-2.my-sm-0(data-toggle="modal", data-target="#addRole" ) Add Role
+    button.btn.btn-outline-success.my-2.my-sm-0(data-toggle="modal", data-target="#addRole" ) Új tennivaló
 
   #addRole.modal.fade(tabindex="-1", role="dialog", aria-labelledby="addRoleTitle", aria-hidden="true")
     .modal-dialog.modal-dialog-centered(role="document")
       .modal-content
         .modal-header
-          h5#loginModalLongTitle.modal-title New Role         
+          h5#loginModalLongTitle.modal-title Új tennivaló         
           button.close(type="button", data-dismiss="modal", aria-label="Close")
             span(aria-hidden="true") &times;       
         .modal-body
           .card(style='width: 18rem;')
             .card-body
               h5.card-title
-                input.form-control(type='text', name='title', placeholder='Role Title' ,[(ngModel)]="newRole.title")             
+                input.form-control(type='text', name='title', placeholder='Tennivaló címe' ,[(ngModel)]="newRole.title")             
               p.card-text
-                textarea.form-control(name='description',placeholder="Role description" ,[(ngModel)]="newRole.description")           
+                textarea.form-control(name='description',placeholder="Tennivaló leírása" ,[(ngModel)]="newRole.description")           
             ul.list-group.list-group-flush
               li.list-group-item
-                input.form-control(type='text', name='time', placeholder='Time, date' ,[(ngModel)]="newRole.time")       
+                input.form-control(type='date', name='time' ,[(ngModel)]="newRole.time")       
               li.list-group-item
-                input.form-control(type='text', name='location', placeholder='Location' ,[(ngModel)]="newRole.location")
+                input.form-control(type='text', name='location', placeholder='Hol is?' ,[(ngModel)]="newRole.location")
               li.list-group-item
-                input.form-control(type='color', name='color', placeholder='#666' ,[(ngModel)]="newRole.color")
+                input.form-control.colorPicker(type='color', name='color' ,[(ngModel)]="newRole.color")
         .modal-footer
-          button.btn.btn-secondary(type="button", data-dismiss="modal") Close          
-          button.btn.btn-primary(type="button" ,(click)="create(userService.loggedInUser['_id'])") Create
-.row
+          button.btn.btn-secondary(type="button", data-dismiss="modal") Mégsem          
+          button.btn.btn-primary(type="button" ,(click)="create(userService.loggedInUser['_id'])", data-dismiss="modal") Legyen
+.row(*ngIf="userService.loggedIn")
   .col-xs-12.col-md-4(*ngFor="let role of roles")
-    .card(style='width: 18rem;')
+    .card(style="width: 18rem;", [style.borderColor]="role.color")
       .card-body
         h5.card-title
           input.form-control(type='text', name='title' ,[(ngModel)]="role.title")             
@@ -42,7 +42,7 @@
         li.list-group-item
           input.form-control(type='text', name='location' ,[(ngModel)]="role.location")
         li.list-group-item
-          input.form-control(type='color', name='color' ,[(ngModel)]="role.color")
+          input.form-control.colorPicker(type='color', name='color' ,[(ngModel)]="role.color")
       .card-body.btn-group
-        button.btn.btn-outline-info.my-2.my-sm-0(type="button" ,(click)="update(role)") Update
-        button.btn.btn-outline-danger.my-2.my-sm-0(type="button" ,(click)="delete(userService.loggedInUser['_id'], role['_id'])") Delete
+        button.btn.btn-outline-info.my-2.my-sm-0(type="button" ,(click)="update(role)") Frissítsd
+        button.btn.btn-outline-danger.my-2.my-sm-0(type="button" ,(click)="delete(userService.loggedInUser['_id'], role['_id'])") Töröld
