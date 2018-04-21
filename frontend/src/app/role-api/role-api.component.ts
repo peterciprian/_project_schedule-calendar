@@ -53,7 +53,7 @@ export class RoleApiComponent implements OnInit {
   }
 
   getAllFromUser(userId) {
-    this.http.get('http://localhost:3002/role/' + userId).subscribe(
+    this.http.get('http://localhost:3002/role/getuser/' + userId).subscribe(
       data => {
         this.roles = data;
         console.log(this.roles)
@@ -78,10 +78,9 @@ export class RoleApiComponent implements OnInit {
   }
 
   delete(userId, roleId) {
-    this.http.delete('http://localhost:3002/role/' + roleId, userId).subscribe(
+    this.http.put('http://localhost:3002/role/deleterole/' + roleId, { userid: userId }).subscribe(
       data => {
         console.log(data);
-        this.errorHandling(data);
       });
   }
 
