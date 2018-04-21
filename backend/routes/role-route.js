@@ -9,6 +9,10 @@ roleRouter.route('/')
 
 roleRouter.route('/:id')
   .put(roleController.update)
-  .delete(roleController.delete)
+
+roleRouter.route('/deleterole/:id')
+  .put(roleController.delete)
+
+roleRouter.route('/getuser/:id')
   .get(roleController.getAllFromUser);
 module.exports = roleRouter

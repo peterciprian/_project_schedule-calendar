@@ -70,14 +70,16 @@ module.exports = {
                 res.json(err)
             }
             User.findByIdAndUpdate(req.body.userid, {
-                $pop: {
+                $pull: {
                     tasks: role['_id']
                 }
             }, (err, data) => {
                 if (err) {
                     res.json(err)
                 }
-                res.json(data)
+                res.json({
+                    success: 'Role deleted'
+                })
             })
         })
     },
