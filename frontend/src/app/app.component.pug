@@ -12,9 +12,97 @@ app-nav
 
   section#profile.row(style='padding-top:56px')
     .col
-      h1 Profil
-      |         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit blanditiis expedita iusto veniam quasi a soluta facere
-      |         rem eligendi ipsum porro, hic deserunt commodi impedit facilis distinctio maxime aspernatur minima!   
+      h1 Profile
+      .row
+        .col-3
+          img(src="/src/assets/OPC.jpg" alt="OPCprofilePicture" style="width: 100%")
+          h5 Oláh Péter Ciprián
+          #v-pills-tab.nav.flex-column.nav-pills(role="tablist" aria-orientation="vertical")
+            a#v-pills-home-tab.nav-link.active(data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true") Alapvető információk
+            a#v-pills-profile-tab.nav-link(data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false") Képzettség
+            a#v-pills-messages-tab.nav-link(data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false") Munkatapasztalat
+            a#v-pills-settings-tab.nav-link(data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false") Társadalmi aktivitás
+        .col-9
+          #v-pills-tabContent.tab-content
+            #v-pills-home.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="v-pills-home-tab")
+              div
+                h6 Szakma
+                ul
+                  li Településmérnök, Full-stack webfejlesztő
+              div
+                h6 Érdeklődési területek
+                ul
+                  li Fenntarthatóság, élhető város
+                  li Promenadológia, városi séták
+                  li Városi kerékpározás
+                  li Építészet, urbanisztika
+              div
+                h6 Lakhely
+                ul
+                  li Budapest
+              div
+                h6 Szuperképesség
+                ul
+                  li Bárhonnan hazatalálok
+            #v-pills-profile.tab-pane.fade(role="tabpanel" aria-labelledby="v-pills-profile-tab")
+              div
+                h6 Diploma
+                ul
+                  li Budapesti Corvinus Egyetem Településmérnök Msc. - 2015
+                  li Budapesti Corvinus Egyetem Kertészmérnök Bsc. - 2012
+              div
+                h6 Egyéb képzések
+                ul
+                  li Yellowroad Full-stack webfejlesztő képzés - 2018
+                  li Mediációs módszerek a közösségi tervezésben - 2016
+              div
+                h6 Nyelvtudás
+                ul
+                  li Angol középfokú nyelvvizsga - 2008
+            #v-pills-messages.tab-pane.fade(role="tabpanel" aria-labelledby="v-pills-messages-tab")
+              div
+                h6 Korábbi munkahelyek
+                ul
+                  li VZM Kft. Projektasszisztens 2015 - 2018
+                  li Városi Séta Kft.(Hosszúlépés. Járunk?) Sétavezető 2017 - 
+              div
+                h6 Egyéb munkatapasztalat
+                ul
+                  li BFVT Kft. Tervező gyakornok 2015
+                  li Kertépítés (referenciamunka: MagNet Ház Andrássy út)
+              div
+                h6 Díjak, Pályázatok, Elismerések
+                ul
+                  li Magyar Tájépítészek Szövetsége Diplomadíj 2016
+                  li Múzeumkert Ötletpályázat megvételt nyert terv 2016
+                  li Budakeszi Városközpont Ötletpályázat különdíjas terv 2016
+                  li Ingatlanfejlesztő Kerekasztal Hallagatói Ötletpályázat I. hely 2015
+                  li BME Várostervezési Napok I. hely 2015
+                  li VII. Magyar Kertépítő Verseny Diák III. hely 2015
+                  li V. Magyar Kertépítő Verseny Diák II. hely 2015
+            #v-pills-settings.tab-pane.fade(role="tabpanel" aria-labelledby="v-pills-settings-tab")
+              div
+                h6 Kortárs Építészeti Központ
+                ul
+                  li Városi séták - Sétavezető, önkéntes
+              div
+                h6 Magyar Kerékpárosklub
+                ul
+                  li Közlekedésszakmai munkacsoport tagja
+              div
+                h6 Magyar Tájépítészek Szövetsége
+                ul
+                  li Tag
+              div
+                h6 Rerrich Béla Tájépítész Szakkollégium
+                ul
+                  li Tag 2011-2015
+                  li Elnök 2013-2015
+              div
+                h6 Balkon Aranya Pályázat
+                ul
+                  li Ötletgazda, szervező (2013-2016)
+   
   section#library.row(style='padding-top:56px')
     h1 Library
       h2 Felhasznált technológiák, csomagok, modulok:

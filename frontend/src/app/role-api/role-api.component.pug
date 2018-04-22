@@ -1,4 +1,4 @@
-.api.row(*ngIf="userService.loggedIn")
+.api.row(*ngIf="userService.loggedIn", (mouseover)="getAllFromUser(userService.loggedInUser['_id'])")
   .list
     button.btn.btn-outline-info.my-2.my-sm-0((click)="getAllFromUser(userService.loggedInUser['_id'])") Mutasd
   .adddNew
