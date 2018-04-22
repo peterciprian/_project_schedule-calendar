@@ -39,8 +39,8 @@ nav.navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
         input.form-control(type="password", name="password", id="loginPassword", placeholder="jelszó" ,[(ngModel)]="user.password")
         p {{user.password}}      
       .modal-footer
-        button.btn.btn-secondary(type="button", data-dismiss="modal") Mégsem          
-        button.btn.btn-primary(type="button" ,(click)="login()" , data-dismiss="modal") Belépek
+        button.btn.btn-outline-secondary.my-2.my-sm-0(type="button", data-dismiss="modal") Mégsem          
+        button.btn.btn-outline-primary.my-2.my-sm-0(type="button" ,(click)="login()" , data-dismiss="modal") Belépek
 // registerModal
 #registerModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="registerModalTitle", aria-hidden="true")
   .modal-dialog.modal-dialog-centered(role="document")
@@ -54,7 +54,7 @@ nav.navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
         input.form-control(type="email", name="email", id="email",  placeholder="villanylevél@" ,[(ngModel)]="user.email")
         input.form-control(type="password", name="password", id="password",  placeholder="jelszó" ,[(ngModel)]="user.password")
       .modal-footer
-        button.btn.btn-secondary(type="button", data-dismiss="modal") Mégsem
-        button.btn.btn-primary(type="button" ,(click)="register()", data-dismiss="modal") Iktass be
+        button.btn.btn-outline-secondary.my-2.my-sm-0(type="button", data-dismiss="modal") Mégsem
+        button.btn.btn-outline-primary.my-2.my-sm-0(type="button" ,(click)="register()", data-dismiss="modal") Iktass be
     
           

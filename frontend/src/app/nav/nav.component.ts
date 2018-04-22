@@ -3,6 +3,7 @@ import { UserManagementService } from '../user-management.service';
 import { FormsModule } from '@angular/forms';
 import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
+import { RoleApiComponent } from '../role-api/role-api.component';
 
 @Component({
   selector: 'app-nav',

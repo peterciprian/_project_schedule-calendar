@@ -3,28 +3,124 @@ app-nav
   section#home.row
     .col
       h1 Kezdjük
-      |         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit blanditiis expedita iusto veniam quasi a soluta facere
-      |         rem eligendi ipsum porro, hic deserunt commodi impedit facilis distinctio maxime aspernatur minima!  
+      h4 Kedves Látogató!
+      p Örülök, hogy erre jársz, nézz szét bátran, remélem nem bánod meg.
+      p Ez az oldal a YellowRoad szoftverfejlesztő képzésem harmadik hónapjának vége felé készült, célja, hogy egy komplex feladaton keresztül mutassuk be mit tanultunk.
+      p A  Profiloldalon a lap készítőjéről olvashatsz némi infót, s alap alján a Kapcsolat szekcióban tudsz emailekkel bombázni, s egyéb elérhetőségeimről informálódni.
+      p Az ismeretek szekció a feladat készítésénél előkerült, felhasznált, vagy épp a munka során megtanult ismeretek bemutatására szolgál, természetesen csupán röviden, a lényegre szorítkozva.
+      p Az igazán érdekes rész pedig a RESTful API menüpont alatt vár, de ahhoz be kell jelentkezni. Ha nem jártál még itt, regisztrálj, de ne aggódj, nem küldünk hírlevelet (egyelőre)!
+
   section#profile.row(style='padding-top:56px')
     .col
       h1 Profil
       |         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit blanditiis expedita iusto veniam quasi a soluta facere
       |         rem eligendi ipsum porro, hic deserunt commodi impedit facilis distinctio maxime aspernatur minima!   
   section#library.row(style='padding-top:56px')
-    .col
-      h1 Ismeretek
-      |         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit blanditiis expedita iusto veniam quasi a soluta facere
-      |         rem eligendi ipsum porro, hic deserunt commodi impedit facilis distinctio maxime aspernatur minima!   
+    h1 Library
+      h2 Felhasznált technológiák, csomagok, modulok:
+    .col-xs-12.col-md-6.light-shadow
+      h3 Angular
+      img(src='/src/assets/Angular_2.png', alt='Angular2', style="width:100%")
+      p Az Angular egy TypeScript alapú (tehát objektum orientált programnyelvű), nyít forrású, webes alkalmazásokhoz fejlesztésére kialakított keretrenszer. Működésének alapelve a hiererchikusan felépített komponensek moduláris rendszere.
+      ul
+        li
+          h4 BrowserModule
+          p A Browser Module felelős érte, hogy a böngésző alapú alkalmazás megfelelően állítsa be a különböző direktívákat és szolgáltatásokat (pl. ngIf, NgFor)
+        li
+          h4 NgModule
+          p Az NgModule konfigurálja az injektort és a compilert és segít rendszerezni az egymással összekapcsolódó egységeket.
+        li
+          h4 FormsModule
+          p ~NgModul az űrlapokhoz
+        li
+          h4 Http, HttpModule, HttpClientModule
+          p A Http-tekérdezések végrehajtásáért felelős modulok.
+        li
+          h4 Egyéni komponensek
+          p A komponensek az UI-k legalapvetőbb építőelemei az Angularban. A komponensek a tulajdonképpen direktívák, viszont
+            | azokkal ellentétben mindíg tartozik hozzájuk sablon. A komponensnek mindíg egy NgModulhoz kell tartozniuk,
+            | hogy használhassa őket egy másik komponens, vagy maga az alkalmazás, Így az NGModule declarations mezőjében
+            | a komponenst fel kell sorolni.
+        li
+          h4 Service
+          p A Szervízekez akkor használjuk, amikor különböző modulokhoz közös funkcionalitást szretnénk biztosítani. Például
+            | egy adatbázisból az adatok lekérését egy szervízre bízva, azt az egyes modulokban újra fel tudjuk használni.
+        li
+          h4 Interface
+          p Az interface alapból nem része az ECMAScript szabványnak, Angularban azonban mégis használhatjuk amikor adatszerkezetek
+            | formáját, sémáját szeretnénk beállítani, hogy az alkalmazásfejlesztés közben a segítségünkre legyen a típusellenőrzésben.
+      h3 PUG
+      .row
+        .col-7
+          p A Pug a NodeJs-hez használható template nyelv, s mint ilyen lehetővé teszi statikus sablonfájlok használatát webes
+            | alkalmazásokban. Legfutáskor a kérésnek megfelelően a temlpate engine a sablonfájl változóiba értékeket helyettesítve
+            | átalakítja a sablont, majd a kliensnek visszaküldi a megfelelő Html stringet. A PUG szintaktitkája a html tag-eket
+            | használja, zárótag-ek nélkül, mindössze a tagolással struktúrálva a kódot.
+        .col-5
+          img(src="/src/assets/PUG.png", alt="PUG", style="width:80%")
+    .col-xs-12.col-md-6.light-shadow
+      h3 Node Js - Express
+      img(src='/src/assets/Express.png', alt='Express', style="width:100%")
+      p Az Express egy rugalmas NodeJs alapú keretrendszer, webes és mobil alkalmazások fejlesztéséhez biztosít eszközöket.
+        | Az Express keretrendszer alapvető jellemzője, hogy middleware-k segítségével kezeli a Http lekérdezéseket; útválasztókat
+        | használ a http lekérdezés típusa és az url apalján a különböző feladatok végrehajtásához; és sablonalapú html oldalak
+        | dinamikus renderelését teszi lehetővé.
+      ul
+        li
+          h4 Path-, Fs-, Http modulok
+          p A Path modul a könyvtárak és fájlok elérési útjainak kezeléséhez szükséges.
+          p Az Fs modul a számítógépen lévő fájlrendszer kezeléséhez, a CRUD műveletek végzéséhez szükséges.
+          p A Http modulaz adatok HTTP kiszolgálón történő utaztatásához szükséges. A modul létrehoz egy http szervert, amely
+            | figyeli a szerver portjait, és válaszol az klienseknek.
+        li
+          h4 CookieParser, BodyParser
+          p A CookieParser a cookie értékét JSON cookieként értelmezi, tehát ha a JSON cookie volt, akkor a JSON értékét,
+            | ellenkező esetben az átadott értéket adja vissza.
+            | A BodyParser a bejövő kérés body-ját értelmezi.
+        li
+          h4 Morgan
+          p A Morgan a Http kérések naplózására készült middleware
+        li
+          h4 Helmet
+          p A Helmet alapvető biztonsági szolgáltatás az Express-es alkalmazásokhoz.
+        li
+          h4 Passport
+          p A Passport egy NodeJs hiteltesítési szolgáltatás. Egyszerűen munkába állítható, rugalmas, és alig látszik. :) 
+        li
+          h4 Mongoose
+          p A szerverrel összekapcsolt adatbázis, a MongoDB egyszerűbb kezeléséhez van segítségünkre a Mongoose. A MongoDB
+            | olyan adatbázis, amelyben a dokumentumok dinamikus struktúrában tárolhatóak. A Mongoose pedig lehetővé teszi
+            | a sémák meghatározását definiált típusos adatokkal. A Séma definiálásával a Mongoose-zal az adott sémára illeszkedő
+            | adatmodell hozható létre, mely az adatbázisban ennek a sémának megfelelően fog tárolódni. A sémák megadásán
+            | felül a Mongoose számos különböző funkciót tartalmaz, amelyek lehetővé teszik az adatok érvényesítését, mentését,
+            | törlését és lekérdezését a MongoDB-s függvények fehasználásával. 
   section#api.row(style='padding-top:56px')
     .col
       h1 RESTful API
-      |         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit blanditiis expedita iusto veniam quasi a soluta facere
-      |         rem eligendi ipsum porro, hic deserunt commodi impedit facilis distinctio maxime aspernatur minima!
+      p Huhúú! Na itt látható a nagy attrakció:
+        | Az alkalmazás arról szól, hogy a bejelentkezett felhaszálók sajt custom kis tennivalókat készíthetnek maguknak.
+        | Kezdésképp kilistázhatják a már elmentett feladatokat, vagy újakat hozhatnak létre. Aztán ha ez már megy is, a látrehozott feladatokból az elvégzetteket törölhetőek, vagy adott esetben a feladat részletei módosíthatóak.
+        | A minialkalmazás csak bejeentkezve érhető el, hiszen ha nem vagy bejelentkezve, nem tudjuk ki vagy, kinek a feladatait kell kezelni. Szóval légyszíves lépj be, vagy iktasd magad a rendszerbe!
+        | Jó mulatást!  
       app-role-api
   section#contact.row(style='padding-top:56px')
-    .col
+    .col 
       h1 Kapcsolat
-      |         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit blanditiis expedita iusto veniam quasi a soluta facere
-      |         rem eligendi ipsum porro, hic deserunt commodi impedit facilis distinctio maxime aspernatur minima!
+      p   A térképen bejelöltem merre találsz meg munkaidőben.  
+      |   Az alábbi űrlapon pedig küldhetsz nekem levelet, ígérem elolvasom és ha szépet írtál talán válaszolok is. 
+      .row
+        .col-lg-7.col-xs-12
+          iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d887.2678633501769!2d19.05325912311765!3d47.461223511670305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dda08d6f129d%3A0x5ed4479e3031e66e!2sTraining360+Kft.!5e0!3m2!1shu!2shu!4v1524345149284" width="600" height="450" frameborder="0" style="border:0" allowfullscreen="")
+        .col-lg-5.col-xs-12
+          form(action='mailto:g2568509@nwytg.com', method='post', enctype='text/plain')
+            .form-group
+              input.form-control(type='text', name='name', placeholder='Név')
+            .form-group
+              input.form-control(type='email', name='email',placeholder='Villanylevél@')
+            .form-group
+              textarea.form-control(name='message', rows='11', placeholder='Ide írd az üzenetet')
+            .btn-group
+              input.btn.btn-outline-success.my-2.my-sm-0(type='submit', name='button', value='Elküldöm') 
+              input.btn.btn-outline-secondary.my-2.my-sm-0(type='reset', name='button', value='Mégsem, úgysem olvasod el..')
 footer
   .footer.py-3.text-center.bg-secondary © 2018 Copyright: OPC

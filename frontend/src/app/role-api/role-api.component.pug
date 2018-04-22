@@ -26,10 +26,10 @@
               li.list-group-item
                 input.form-control.colorPicker(type='color', name='color' ,[(ngModel)]="newRole.color")
         .modal-footer
-          button.btn.btn-secondary(type="button", data-dismiss="modal") Mégsem          
-          button.btn.btn-primary(type="button" ,(click)="create(userService.loggedInUser['_id'])", data-dismiss="modal") Legyen
+          button.btn.btn-outline-secondary.my-2.my-sm-0(type="button", data-dismiss="modal") Mégsem          
+          button.btn.btn-outline-primary.my-2.my-sm-0(type="button" ,(click)="create(userService.loggedInUser['_id'])", data-dismiss="modal") Legyen
 .row(*ngIf="userService.loggedIn")
-  .col-xs-12.col-md-4(*ngFor="let role of roles")
+  .col-xs-12.col-md-6.col-lg-4(*ngFor="let role of roles")
     .card(style="width: 18rem;", [style.borderColor]="role.color")
       .card-body
         h5.card-title
@@ -38,7 +38,7 @@
           textarea.form-control(name='description' ,[(ngModel)]="role.description")          
       ul.list-group.list-group-flush
         li.list-group-item
-          input.form-control(type='text', name='time' ,[(ngModel)]="role.time")       
+          input.form-control(type='date', name='time' ,[(ngModel)]="role.time")       
         li.list-group-item
           input.form-control(type='text', name='location' ,[(ngModel)]="role.location")
         li.list-group-item
