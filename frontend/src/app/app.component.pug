@@ -2,8 +2,7 @@ app-nav
 .container
   section#home.row
     .col
-      h1 Kezdjük
-      h4 Kedves Látogató!
+      h2 Kedves Látogató!
       p Örülök, hogy erre jársz, nézz szét bátran, remélem nem bánod meg.
       p Ez az oldal a YellowRoad szoftverfejlesztő képzésem harmadik hónapjának vége felé készült, célja, hogy egy komplex feladaton keresztül mutassuk be mit tanultunk.
       p A  Profiloldalon a lap készítőjéről olvashatsz némi infót, s alap alján a Kapcsolat szekcióban tudsz emailekkel bombázni, s egyéb elérhetőségeimről informálódni.
@@ -12,10 +11,10 @@ app-nav
 
   section#profile.row(style='padding-top:56px')
     .col
-      h1 Profile
+      h1 Profil
       .row
         .col-3
-          img(src="/src/assets/OPC.jpg" alt="OPCprofilePicture" style="width: 100%")
+          img.profilePicture(src="/src/assets/OPC.jpg" alt="OPCprofilePicture" style="width: 100%")
           h5 Oláh Péter Ciprián
           #v-pills-tab.nav.flex-column.nav-pills(role="tablist" aria-orientation="vertical")
             a#v-pills-home-tab.nav-link.active(data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true") Alapvető információk
@@ -104,7 +103,7 @@ app-nav
                   li Ötletgazda, szervező (2013-2016)
    
   section#library.row(style='padding-top:56px')
-    h1 Library
+    h1 Tudástár
       h2 Felhasznált technológiák, csomagok, modulok:
     .col-xs-12.col-md-6.light-shadow
       h3 Angular

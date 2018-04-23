@@ -1,3 +1,47 @@
 .light-shadow {
   box-shadow: aliceblue 1px 1px 10px;
 }
+
+section#home {
+  background-image: url("/src/assets/bg2.png")
+}
+
+section#profile {
+  background-color: lightgrey;
+}
+
+#library {
+  background-image: url("/src/assets/bg3.jpg")
+}
+
+section#api {
+  background-image: url("/src/assets/bg4.png")
+}
+
+section#contact {
+  background-image: url("/src/assets/bg4b.png");
+  background-repeat: repeat;
+  background-size: 50%
+}
+
+.profilePicture {
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #daa520;
+  border-width: 3px;
+  margin-bottom: 20px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #212529;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #daa520;
+  border-width: 3px;
+}
+
+.nav-link {
+  color: #212529;
+}
