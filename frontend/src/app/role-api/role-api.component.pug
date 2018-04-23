@@ -15,9 +15,9 @@
           .card(style='width: 18rem;')
             .card-body
               h5.card-title
-                input.form-control(type='text', name='title', placeholder='Tennivaló címe' ,[(ngModel)]="newRole.title")             
+                input.form-control(type='text', name='title', placeholder='Tennivaló címe' ,[(ngModel)]="newRole.title", #title="ngModel" required)             
               p.card-text
-                textarea.form-control(name='description',placeholder="Tennivaló leírása" ,[(ngModel)]="newRole.description")           
+                textarea.form-control(name='description',placeholder="Tennivaló leírása" ,[(ngModel)]="newRole.description", #description="ngModel" required)           
             ul.list-group.list-group-flush
               li.list-group-item
                 input.form-control(type='date', name='time' ,[(ngModel)]="newRole.time")       
@@ -25,17 +25,19 @@
                 input.form-control(type='text', name='location', placeholder='Hol is?' ,[(ngModel)]="newRole.location")
               li.list-group-item
                 input.form-control.colorPicker(type='color', name='color' ,[(ngModel)]="newRole.color")
+              .alert.alert-danger([hidden]="title.valid || title.untouched") Nem nevezted el a tennivalót!
+              .alert.alert-danger([hidden]="description.valid || description.untouched") Nem részletezted a teendőt!
         .modal-footer
-          button.btn.btn-outline-secondary.my-2.my-sm-0(type="button", data-dismiss="modal") Mégsem          
-          button.btn.btn-outline-primary.my-2.my-sm-0(type="button" ,(click)="create(userService.loggedInUser['_id'])", data-dismiss="modal") Legyen
+          button.btn.btn-outline-secondary.my-2.my-sm-0(type="reset", data-dismiss="modal") Mégsem          
+          button.btn.btn-outline-primary.my-2.my-sm-0(type="button" ,(click)="create(userService.loggedInUser['_id'])", data-dismiss="modal",[disabled]="!title.valid || !description.valid") Legyen
 .row(*ngIf="userService.loggedIn")
   .col-xs-12.col-md-6.col-lg-4(*ngFor="let role of roles")
     .card(style="width: 18rem;", [style.borderColor]="role.color")
       .card-body
         h5.card-title
-          input.form-control(type='text', name='title' ,[(ngModel)]="role.title")             
+          input.form-control(type='text', name='title' ,[(ngModel)]="role.title", #title="ngModel" required)             
         p.card-text
-          textarea.form-control(name='description' ,[(ngModel)]="role.description")          
+          textarea.form-control(name='description' ,[(ngModel)]="role.description", #description="ngModel" required)          
       ul.list-group.list-group-flush
         li.list-group-item
           input.form-control(type='date', name='time' ,[(ngModel)]="role.time")       
@@ -43,6 +45,8 @@
           input.form-control(type='text', name='location' ,[(ngModel)]="role.location")
         li.list-group-item
           input.form-control.colorPicker(type='color', name='color' ,[(ngModel)]="role.color")
+        .alert.alert-danger([hidden]="title.valid || title.pristine")  Nincs feladat cím nélkül!
+        .alert.alert-danger([hidden]="description.valid || description.pristine") A leírás ki ne maradjon! 
       .card-body.btn-group
-        button.btn.btn-outline-info.my-2.my-sm-0(type="button" ,(click)="update(role)") Frissítsd
+        button.btn.btn-outline-info.my-2.my-sm-0(type="button" ,(click)="update(role)", [disabled]="!title.valid || !description.valid") Frissítsd
         button.btn.btn-outline-danger.my-2.my-sm-0(type="button" ,(click)="delete(userService.loggedInUser['_id'], role['_id'])") Töröld

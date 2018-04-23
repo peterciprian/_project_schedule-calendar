@@ -9,3 +9,13 @@
   width: 30pt;
   height: 25pt;
 }
+
+input.ng-valid[required].ng-touched,
+textarea.ng-valid[required].ng-touched {
+  border-right: 5px solid green;
+}
+
+input.ng-invalid[required].ng-touched,
+textarea.ng-invalid[required].ng-touched {
+  border-right: 5px solid red;
+}

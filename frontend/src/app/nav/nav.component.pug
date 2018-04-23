@@ -34,13 +34,11 @@ nav.navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
         button.close(type="button", data-dismiss="modal", aria-label="Close")
           span(aria-hidden="true") &times;       
       .modal-body
-        input.form-control(type="text", name="username", id="loginUsername", placeholder="becenév" ,[(ngModel)]="user.username")
-        p {{user.username}}                         
-        input.form-control(type="password", name="password", id="loginPassword", placeholder="jelszó" ,[(ngModel)]="user.password")
-        p {{user.password}}      
+        input.form-control(type="text", name="username", id="loginUsername", placeholder="becenév" ,[(ngModel)]="user.username", #username="ngModel" required)                        
+        input.form-control(type="password", name="password", id="loginPassword", placeholder="jelszó" ,[(ngModel)]="user.password", #password="ngModel" required)    
       .modal-footer
         button.btn.btn-outline-secondary.my-2.my-sm-0(type="button", data-dismiss="modal") Mégsem          
-        button.btn.btn-outline-primary.my-2.my-sm-0(type="button" ,(click)="login()" , data-dismiss="modal") Belépek
+        button.btn.btn-outline-primary.my-2.my-sm-0(type="button" ,(click)="login()" , data-dismiss="modal", [disabled]="!username.valid || !password.valid") Belépek
 // registerModal
 #registerModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="registerModalTitle", aria-hidden="true")
   .modal-dialog.modal-dialog-centered(role="document")
