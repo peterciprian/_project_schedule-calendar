@@ -1,5 +1,9 @@
-.light-shadow {
+/*.light-shadow {
   box-shadow: aliceblue 1px 1px 10px;
+}*/
+
+section {
+  padding: 20px;
 }
 
 section#home {
@@ -10,7 +14,7 @@ section#profile {
   background-color: lightgrey;
 }
 
-#library {
+section#library {
   background-image: url("/src/assets/bg3.jpg")
 }
 
@@ -43,5 +47,9 @@ section#contact {
 }
 
 .nav-link {
+  color: #212529;
+}
+
+div>ul>li>a {
   color: #212529;
 }

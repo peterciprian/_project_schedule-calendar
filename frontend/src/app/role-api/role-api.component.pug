@@ -20,7 +20,7 @@
                 textarea.form-control(name='description',placeholder="Tennivaló leírása" ,[(ngModel)]="newRole.description", #description="ngModel" required)           
             ul.list-group.list-group-flush
               li.list-group-item
-                input.form-control(type='date', name='time' ,[(ngModel)]="newRole.time")       
+                input.form-control(type='datetime-local', name='time' ,[(ngModel)]="newRole.time")       
               li.list-group-item
                 input.form-control(type='text', name='location', placeholder='Hol is?' ,[(ngModel)]="newRole.location")
               li.list-group-item
@@ -40,7 +40,7 @@
           textarea.form-control(name='description' ,[(ngModel)]="role.description", #description="ngModel" required)          
       ul.list-group.list-group-flush
         li.list-group-item
-          input.form-control(type='date', name='time' ,[(ngModel)]="role.time")       
+          input.form-control(type='datetime-local', name='time' ,[(ngModel)]="role.time")       
         li.list-group-item
           input.form-control(type='text', name='location' ,[(ngModel)]="role.location")
         li.list-group-item
