@@ -1,0 +1,30 @@
+server:
+    - mongodb elérés                -user esetében pipa
+    - adatbázisok létrehozása       -user esetében pipa
+    - autentikáció                  -pipa
+    - postman-test                  -user esetében pipa
+    - loggolás tesztelése
+    - biztonság: helmet             -elvileg jó, de olvasni róla
+    - readme írása:
+        - package-k leírása
+        - használatukról egy két mondat
+    - db-k összekapcsolása - one to many kapcsolat - utánanézni
+
+frontend:
+    - PUG template
+    - modal -login, register
+    - főoldal
+    - profil
+    - tudásbázis:
+        - package-ekről röviden, hogy mi volt velük a probléma, de mégis miért jók - a readme-ből 
+        - linterek?
+    - RESTful API page + leírása
+    - kapcsolat: google map+ kapcsolatfelvételi űrlap
+    - bootstrap pimp
+    - css stylelint, airbnb szbálykészlet (BEM metodika?)
+    - http kérések Servízben
+    - interfész mindenre, amire csak lehet
+
+adatbázis:
+    - 
+
